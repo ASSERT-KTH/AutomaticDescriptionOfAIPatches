@@ -1,0 +1,12 @@
+diff --git a/data/open-source projects/1-merlin/1.9/1-9-b.java b/data/open-source projects/1-merlin/1.9/1-9-a.java
+index 5b97d55..7040dcb 100644
+--- a/data/open-source projects/1-merlin/1.9/1-9-b.java	
++++ b/data/open-source projects/1-merlin/1.9/1-9-a.java	
+@@ -115,7 +115,6 @@ public class MerlinServiceTest {
+         verifyZeroInteractions(connectivityChangesForwarder);
+     }
+ 
+-
+     @Test
+     public void givenUnboundService_whenNotifying_thenDoesNotForwardEvent() {
+         MerlinService.LocalBinder localBinder = givenBoundMerlinService();

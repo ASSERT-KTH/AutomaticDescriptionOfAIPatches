@@ -1,0 +1,13 @@
+diff --git a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.9/2-9-b.java b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.9/2-9-a.java
+index f3aa215..b4b12af 100644
+--- a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.9/2-9-b.java	
++++ b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.9/2-9-a.java	
+@@ -73,7 +73,7 @@ public class RedisRateLimiter extends AbstractCacheRateLimiter {
+             String msg = "Failed retrieving rate for " + key + ", will return the current value";
+             rateLimiterErrorHandler.handleError(msg, e);
+         }
+-        return Math.max(-1, limit - current);
++        return Math.max(-1, limit - (current != null ? current : 0L));
+     }
+ 
+     private void handleExpiration(String key, Long refreshInterval) {

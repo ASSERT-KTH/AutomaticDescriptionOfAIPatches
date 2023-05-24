@@ -1,0 +1,1 @@
+Add device types to assignment search + fix device/assn indexes.

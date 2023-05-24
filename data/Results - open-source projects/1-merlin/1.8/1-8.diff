@@ -1,0 +1,17 @@
+diff --git a/data/open-source projects/1-merlin/1.8/1-8-b.java b/data/open-source projects/1-merlin/1.8/1-8-a.java
+index c908ae8..85de76d 100644
+--- a/data/open-source projects/1-merlin/1.8/1-8-b.java	
++++ b/data/open-source projects/1-merlin/1.8/1-8-a.java	
+@@ -50,12 +50,6 @@ public abstract class MerlinActivity extends AppCompatActivity {
+         Logger.detach(logHandle);
+     }
+ 
+-    @Override
+-    protected void onDestroy() {
+-        merlin = null;
+-        super.onDestroy();
+-    }
+-
+     private static class DemoLogHandle implements Logger.LogHandle {
+ 
+         private static final String TAG = "DemoLogHandle";

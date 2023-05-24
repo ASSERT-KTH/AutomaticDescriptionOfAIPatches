@@ -1,0 +1,21 @@
+There has been a change in the section of code starting on line nr 10.
+
+The change is in the class WebUtils.
+
+Inserted method public static void openGooglePlay(@androidx.annotation.NonNull
+android.content.Context context, @androidx.annotation.NonNull
+android.view.View view, com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper themeHelper) {
+    final java.lang.String appPackageName = context.getPackageName();
+    android.net.Uri link;
+    try {
+        link = android.net.Uri.parse("market://details?id=" + appPackageName);
+        context.startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW, link));
+    } catch (android.content.ActivityNotFoundException e) {
+        try {
+            link = android.net.Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName);
+            context.startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW, link));
+        } catch (android.content.ActivityNotFoundException e2) {
+            new com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar(context, view, context.getString(R.string.message_error_start_google_play), themeHelper).show();
+        }
+    }
+} on line 21.

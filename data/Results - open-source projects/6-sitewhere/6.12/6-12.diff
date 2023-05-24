@@ -1,0 +1,12 @@
+diff --git a/data/open-source projects/6-sitewhere/6.12/6-12-b.java b/data/open-source projects/6-sitewhere/6.12/6-12-a.java
+index f5d4dcd..4ccc47a 100644
+--- a/data/open-source projects/6-sitewhere/6.12/6-12-b.java	
++++ b/data/open-source projects/6-sitewhere/6.12/6-12-a.java	
+@@ -91,6 +91,7 @@ public abstract class MongoDbClient extends TenantEngineLifecycleComponent
+ 	while (true) {
+ 	    try {
+ 		MongoClientOptions.Builder builder = new MongoClientOptions.Builder();
++		builder.serverSelectionTimeout(-1); // Wait indefinitely for server selection.
+ 		builder.maxConnectionIdleTime(60 * 60 * 1000); // 1hour
+ 		builder.connectionsPerHost(10);
+ 

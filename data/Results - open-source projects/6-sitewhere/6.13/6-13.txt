@@ -1,0 +1,1 @@
+More detail when tenant API not available.

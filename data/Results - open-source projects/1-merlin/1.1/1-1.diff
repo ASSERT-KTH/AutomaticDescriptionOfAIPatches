@@ -1,0 +1,9 @@
+@@ -18,7 +18,7 @@
+    }
+
+    List<T> registerables() {
+-        return registerables;
++        return new ArrayList<>(registerables);
+    }
+
+    void clear() {

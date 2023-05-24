@@ -1,0 +1,13 @@
+diff --git a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.10/2-10-b.java b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.10/2-10-a.java
+index bf9c40b..cf2f9cd 100644
+--- a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.10/2-10-b.java	
++++ b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.10/2-10-a.java	
+@@ -28,7 +28,7 @@ import com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.config.properties.Ra
+  * @author Liel Chayoun
+  * @since 2018-04-06
+  */
+-abstract class AbstractCacheRateLimiter implements RateLimiter {
++public abstract class AbstractCacheRateLimiter implements RateLimiter {
+ 
+     @Override
+     public synchronized Rate consume(Policy policy, String key, Long requestTime) {

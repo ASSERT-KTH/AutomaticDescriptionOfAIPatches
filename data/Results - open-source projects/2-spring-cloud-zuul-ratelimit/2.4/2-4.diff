@@ -1,0 +1,13 @@
+diff --git a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.4/2-4-b.java b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.4/2-4-a.java
+index 716075a..8742771 100644
+--- a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.4/2-4-b.java	
++++ b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.4/2-4-a.java	
+@@ -27,7 +27,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
+  * @author Marcos Barbero
+  * @author Liel Chayoun
+  */
+-public final class RedisRateLimiter extends AbstractCacheRateLimiter {
++public class RedisRateLimiter extends AbstractCacheRateLimiter {
+ 
+     private final RateLimiterErrorHandler rateLimiterErrorHandler;
+     private final StringRedisTemplate redisTemplate;

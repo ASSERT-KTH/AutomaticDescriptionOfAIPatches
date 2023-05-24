@@ -1,0 +1,3 @@
+fixes Slimefun#3483
+
+Added null check

@@ -1,0 +1,3 @@
+OCFileListFragment: also reset search type when resetting search event
+Fixes an issue where it was persisted after coming back from Favorites, and
+the fragment was incorrectly deleting favorite files from the list when unfavoriting.

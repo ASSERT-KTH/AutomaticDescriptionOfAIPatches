@@ -1,0 +1,18 @@
+diff --git a/data/open-source projects/5-hash-checker-lite/5.6/5-6-b.java b/data/open-source projects/5-hash-checker-lite/5.6/5-6-a.java
+index ad51516..e028568 100644
+--- a/data/open-source projects/5-hash-checker-lite/5.6/5-6-b.java	
++++ b/data/open-source projects/5-hash-checker-lite/5.6/5-6-a.java	
+@@ -199,13 +199,6 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
+         );
+     }
+ 
+-    private boolean containsPreference(
+-            @NonNull String key
+-    ) {
+-        return PreferenceManager.getDefaultSharedPreferences(context)
+-                .contains(key);
+-    }
+-
+     private void saveStringPreference(
+             @NonNull String key,
+             @Nullable String value

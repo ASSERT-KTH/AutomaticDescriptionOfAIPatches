@@ -1,0 +1,7 @@
+There has been a change in the section of code starting on line nr 51.
+
+The change is in the class EPStatementStartMethodCreateVariable, in the method startInternal.
+
+Inserted invocation statementContext.setStatementAgentInstanceFactory(contextFactory) on line 104.
+Moved local variable com.espertech.esper.client.EventType eventType = CreateVariableView.getEventType(statementContext.getStatementId(), services.getEventAdapterService(), variableMetaData) from line 104 to line 102.
+Moved local variable com.espertech.esper.core.context.factory.StatementAgentInstanceFactoryCreateVariable contextFactory = new com.espertech.esper.core.context.factory.StatementAgentInstanceFactoryCreateVariable(statementContext, services, variableMetaData, eventType) from line 105 to line 103.

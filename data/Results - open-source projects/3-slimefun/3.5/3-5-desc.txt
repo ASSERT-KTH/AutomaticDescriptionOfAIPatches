@@ -1,0 +1,7 @@
+There has been a change in the section of code starting on line nr 228.
+
+The change is in the class SlimefunItemSetup, in the method setup.
+
+Changed literal from 16 to 8 on line 1822.
+Deleted type reference void on line 228.
+Inserted type reference void on line 228.

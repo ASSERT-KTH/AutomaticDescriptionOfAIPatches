@@ -1,0 +1,153 @@
+There has been a change in the section of code starting on line nr 40.
+
+The change is in the class TestXSDSchemaMapper.
+
+Changed local variable from com.espertech.esper.event.xml.SchemaElementComplex component = model.getComponents().get(0) to com.espertech.esper.event.xml.SchemaElementComplex simpleEvent = model.getComponents().get(0) on line 50.
+Changed local variable from com.espertech.esper.event.xml.SchemaElementComplex nested1Element = component.getChildren().get(0) to com.espertech.esper.event.xml.SchemaElementComplex nested1 = simpleEvent.getChildren().get(0) on line 59.
+Changed local variable from com.espertech.esper.event.xml.SchemaElementComplex nested2Element = nested1Element.getChildren().get(0) to com.espertech.esper.event.xml.SchemaElementComplex nested2 = nested1.getChildren().get(0) on line 76.
+Changed local variable from com.espertech.esper.event.xml.SchemaElementComplex prop4Element = component.getChildren().get(1) to com.espertech.esper.event.xml.SchemaElementComplex prop4 = simpleEvent.getChildren().get(1) on line 87.
+Changed invocation from assertEquals("prop4", prop4Element.getName()) to com.espertech.esper.event.xml.TestXSDSchemaMapper.verifyElement(prop4, "prop4") on line 88.
+Changed local variable from com.espertech.esper.event.xml.SchemaElementComplex nested3Element = component.getChildren().get(2) to com.espertech.esper.event.xml.SchemaElementComplex nested3 = simpleEvent.getChildren().get(2) on line 98.
+Changed local variable from com.espertech.esper.event.xml.SchemaElementComplex nested4Element = nested3Element.getChildren().get(0) to com.espertech.esper.event.xml.SchemaElementComplex nested4 = nested3.getChildren().get(0) on line 107.
+Changed literal from "samples:schemas:simpleSchema" to false on line 52.
+Changed variable read from component to simpleEvent on line 52.
+Changed literal from "samples:schemas:simpleSchema" to false on line 61.
+Changed variable read from nested1Element to nested1 on line 61.
+Changed literal from "samples:schemas:simpleSchema" to false on line 78.
+Changed variable read from nested2Element to nested2 on line 78.
+Changed variable read from prop4Element to prop4 on line 89.
+Changed literal from "samples:schemas:simpleSchema" to false on line 100.
+Changed variable read from nested3Element to nested3 on line 100.
+Changed literal from "samples:schemas:simpleSchema" to true on line 109.
+Changed variable read from nested4Element to nested4 on line 109.
+Changed type access from com.espertech.esper.event.xml.TestXSDSchemaMapper to com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType on line null.
+Changed type access from com.espertech.esper.event.xml.TestXSDSchemaMapper to com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType on line null.
+Changed type access from com.espertech.esper.event.xml.TestXSDSchemaMapper to com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType on line null.
+Changed variable read from prop4Element to prop4 on line 96.
+Changed type access from com.espertech.esper.event.xml.TestXSDSchemaMapper to com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType on line null.
+Changed type access from com.espertech.esper.event.xml.TestXSDSchemaMapper to com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType on line null.
+Changed variable read from component to simpleEvent on line 59.
+Changed variable read from nested1Element to nested1 on line 76.
+Changed variable read from nested2Element to nested2 on line 85.
+Changed variable read from component to simpleEvent on line 87.
+Changed variable read from component to simpleEvent on line 98.
+Changed variable read from nested3Element to nested3 on line 107.
+Changed variable read from nested4Element to nested4 on line 118.
+Changed variable read from nested4Element to nested4 on line 119.
+Changed variable read from nested4Element to nested4 on line 120.
+Changed variable read from nested4Element to nested4 on line 121.
+Changed variable read from nested1Element to nested1 on line 68.
+Changed variable read from nested1Element to nested1 on line 69.
+Changed variable read from nested1Element to nested1 on line 70.
+Changed variable read from nested1Element to nested1 on line 71.
+Changed variable read from nested1Element to nested1 on line 72.
+Changed variable read from nested1Element to nested1 on line 73.
+Changed variable read from nested1Element to nested1 on line 74.
+Changed variable read from prop4Element to prop4 on line 93.
+Changed variable read from prop4Element to prop4 on line 94.
+Changed variable read from nested4Element to nested4 on line 113.
+Changed variable read from nested4Element to nested4 on line 114.
+Deleted invocation assertEquals("simpleEvent", component.getName()) on line 51.
+Deleted invocation assertEquals("samples:schemas:simpleSchema", component.getNamespace()) on line 52.
+Deleted invocation assertEquals(0, component.getAttributes().size()) on line 53.
+Deleted invocation assertEquals(0, component.getSimpleElements().size()) on line 54.
+Deleted invocation assertEquals(3, component.getChildren().size()) on line 55.
+Deleted invocation assertFalse(component.isArray()) on line 56.
+Deleted invocation assertNull(component.getOptionalSimpleType()) on line 57.
+Deleted invocation assertEquals("nested1", nested1Element.getName()) on line 60.
+Deleted invocation assertEquals("samples:schemas:simpleSchema", nested1Element.getNamespace()) on line 61.
+Deleted invocation assertEquals(1, nested1Element.getAttributes().size()) on line 62.
+Deleted invocation assertEquals(2, nested1Element.getSimpleElements().size()) on line 63.
+Deleted invocation assertEquals(1, nested1Element.getChildren().size()) on line 64.
+Deleted invocation assertFalse(nested1Element.isArray()) on line 65.
+Deleted invocation assertNull(nested1Element.getOptionalSimpleType()) on line 66.
+Deleted invocation assertEquals("nested2", nested2Element.getName()) on line 77.
+Deleted invocation assertEquals("samples:schemas:simpleSchema", nested2Element.getNamespace()) on line 78.
+Deleted invocation assertEquals(0, nested2Element.getAttributes().size()) on line 79.
+Deleted invocation assertEquals(1, nested2Element.getSimpleElements().size()) on line 80.
+Deleted invocation assertEquals(0, nested2Element.getChildren().size()) on line 81.
+Deleted invocation assertFalse(nested2Element.isArray()) on line 82.
+Deleted invocation assertNull(nested2Element.getOptionalSimpleType()) on line 83.
+Deleted invocation assertEquals("samples:schemas:simpleSchema", prop4Element.getNamespace()) on line 89.
+Deleted invocation assertEquals(1, prop4Element.getAttributes().size()) on line 90.
+Deleted invocation assertEquals(0, prop4Element.getSimpleElements().size()) on line 91.
+Deleted invocation assertEquals(0, prop4Element.getChildren().size()) on line 92.
+Deleted invocation assertFalse(prop4Element.isArray()) on line 95.
+Deleted invocation assertEquals("nested3", nested3Element.getName()) on line 99.
+Deleted invocation assertEquals("samples:schemas:simpleSchema", nested3Element.getNamespace()) on line 100.
+Deleted invocation assertEquals(0, nested3Element.getAttributes().size()) on line 101.
+Deleted invocation assertEquals(0, nested3Element.getSimpleElements().size()) on line 102.
+Deleted invocation assertEquals(1, nested3Element.getChildren().size()) on line 103.
+Deleted invocation assertFalse(nested3Element.isArray()) on line 104.
+Deleted invocation assertNull(nested3Element.getOptionalSimpleType()) on line 105.
+Deleted invocation assertEquals("nested4", nested4Element.getName()) on line 108.
+Deleted invocation assertEquals("samples:schemas:simpleSchema", nested4Element.getNamespace()) on line 109.
+Deleted invocation assertEquals(1, nested4Element.getAttributes().size()) on line 110.
+Deleted invocation assertEquals(4, nested4Element.getSimpleElements().size()) on line 111.
+Deleted invocation assertEquals(0, nested4Element.getChildren().size()) on line 112.
+Deleted invocation assertTrue(nested4Element.isArray()) on line 115.
+Deleted invocation assertNull(nested4Element.getOptionalSimpleType()) on line 116.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifyComplexElement(simpleEvent, "simpleEvent", com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.COMPLEX_TYPE, false) on line 51.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifySizes(simpleEvent, 0, 0, 3) on line 52.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifyComplexElement(nested1, "nested1", com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.COMPLEX_TYPE, false) on line 55.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifySizes(nested1, 1, 2, 1) on line 56.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifyComplexElement(nested2, "nested2", com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.COMPLEX_TYPE, false) on line 66.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifySizes(nested2, 0, 1, 0) on line 67.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifySizes(prop4, 1, 0, 0) on line 72.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifyComplexElement(nested3, "nested3", com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.COMPLEX_TYPE, false) on line 78.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifySizes(nested3, 0, 0, 1) on line 79.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifyComplexElement(nested4, "nested4", com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.COMPLEX_TYPE, true) on line 82.
+Inserted invocation com.espertech.esper.event.xml.TestXSDSchemaMapper.verifySizes(nested4, 1, 4, 0) on line 83.
+Inserted parameter boolean isArray on line 234.
+Inserted invocation assertEquals(isArray, element.isArray()) on line 236.
+Inserted literal false on line 124.
+Inserted literal false on line 128.
+Inserted literal false on line 132.
+Inserted literal false on line 136.
+Inserted literal false on line 140.
+Inserted literal false on line 144.
+Inserted literal false on line 148.
+Inserted literal false on line 152.
+Moved literal "simpleEvent" from line 51 to line 51.
+Moved literal "samples:schemas:simpleSchema" from line 52 to line 51.
+Moved variable read component from line 52 to line 52.
+Moved literal 0 from line 53 to line 52.
+Moved literal 0 from line 54 to line 52.
+Moved literal 3 from line 55 to line 52.
+Moved literal "nested1" from line 60 to line 55.
+Moved literal "samples:schemas:simpleSchema" from line 61 to line 55.
+Moved variable read nested1Element from line 61 to line 56.
+Moved literal 1 from line 62 to line 56.
+Moved literal 2 from line 63 to line 56.
+Moved literal 1 from line 64 to line 56.
+Moved literal "nested2" from line 77 to line 66.
+Moved literal "samples:schemas:simpleSchema" from line 78 to line 66.
+Moved variable read nested2Element from line 78 to line 67.
+Moved literal 0 from line 79 to line 67.
+Moved literal 1 from line 80 to line 67.
+Moved literal 0 from line 81 to line 67.
+Moved variable read prop4Element from line 89 to line 72.
+Moved literal 1 from line 90 to line 72.
+Moved literal 0 from line 91 to line 72.
+Moved literal 0 from line 92 to line 72.
+Moved literal "nested3" from line 99 to line 78.
+Moved literal "samples:schemas:simpleSchema" from line 100 to line 78.
+Moved variable read nested3Element from line 100 to line 79.
+Moved literal 0 from line 101 to line 79.
+Moved literal 0 from line 102 to line 79.
+Moved literal 1 from line 103 to line 79.
+Moved literal "nested4" from line 108 to line 82.
+Moved literal "samples:schemas:simpleSchema" from line 109 to line 82.
+Moved variable read nested4Element from line 109 to line 83.
+Moved literal 1 from line 110 to line 83.
+Moved literal 4 from line 111 to line 83.
+Moved literal 0 from line 112 to line 83.
+Moved field read com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.PRIMITIVE_STRING from line 121 to line 86.
+Moved field read com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.PRIMITIVE_STRING from line 118 to line 87.
+Moved field read com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.PRIMITIVE_STRING from line 119 to line 88.
+Moved field read com.sun.org.apache.xerces.internal.impl.dv.XSSimpleType.PRIMITIVE_STRING from line 120 to line 89.
+Moved type access com.espertech.esper.event.xml.TestXSDSchemaMapper on line 51.
+Moved type access com.espertech.esper.event.xml.TestXSDSchemaMapper on line 55.
+Moved type access com.espertech.esper.event.xml.TestXSDSchemaMapper on line 66.
+Moved type access com.espertech.esper.event.xml.TestXSDSchemaMapper on line 78.
+Moved type access com.espertech.esper.event.xml.TestXSDSchemaMapper on line 82.

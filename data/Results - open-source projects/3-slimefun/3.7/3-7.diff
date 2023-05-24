@@ -1,0 +1,20 @@
+diff --git a/data/open-source projects/3-slimefun/3.7/3-7-b.java b/data/open-source projects/3-slimefun/3.7/3-7-a.java
+index a740842..3e5e8cf 100644
+--- a/data/open-source projects/3-slimefun/3.7/3-7-b.java	
++++ b/data/open-source projects/3-slimefun/3.7/3-7-a.java	
+@@ -32,6 +32,7 @@ public class KnowledgeFlask extends SimpleSlimefunItem<ItemUseHandler> {
+     @Override
+     public ItemUseHandler getItemHandler() {
+         return e -> {
++            e.cancel();
+             Player p = e.getPlayer();
+ 
+             if (p.getLevel() >= 1 && (!e.getClickedBlock().isPresent() || !(e.getClickedBlock().get().getType().isInteractable()))) {
+@@ -47,7 +48,6 @@ public class KnowledgeFlask extends SimpleSlimefunItem<ItemUseHandler> {
+                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1F, 0.5F);
+ 
+                 ItemUtils.consumeItem(e.getItem(), false);
+-                e.cancel();
+             }
+         };
+     }

@@ -1,0 +1,33 @@
+diff --git a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.3/2-3-b.java b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.3/2-3-a.java
+index 0a1b7ac..65126a4 100644
+--- a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.3/2-3-b.java	
++++ b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.3/2-3-a.java	
+@@ -19,11 +19,13 @@ import com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.config.repository.Re
+ import com.marcosbarbero.tests.RedisApplication;
+ import java.util.UUID;
+ import java.util.concurrent.TimeUnit;
++import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.test.context.SpringBootTest;
+ import org.springframework.boot.test.web.client.TestRestTemplate;
+ import org.springframework.context.ApplicationContext;
++import org.springframework.data.redis.core.StringRedisTemplate;
+ import org.springframework.http.HttpHeaders;
+ import org.springframework.http.ResponseEntity;
+ 
+@@ -40,6 +42,14 @@ public class RedisApplicationTestIT {
+     @Autowired
+     private ApplicationContext context;
+ 
++    @Autowired
++    private StringRedisTemplate redisTemplate;
++
++    @BeforeEach
++    void resetStorage() {
++      redisTemplate.delete(redisTemplate.keys("*"));
++    }
++
+     @Test
+     public void testRedisRateLimiter() {
+         RateLimiter rateLimiter = context.getBean(RateLimiter.class);

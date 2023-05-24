@@ -1,0 +1,1 @@
+Fix log warning about no icon being set #95 

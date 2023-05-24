@@ -1,0 +1,24 @@
+diff --git a/data/open-source projects/6-sitewhere/6.11/6-11-b.java b/data/open-source projects/6-sitewhere/6.11/6-11-a.java
+index e79ed35..2150e2b 100644
+--- a/data/open-source projects/6-sitewhere/6.11/6-11-b.java	
++++ b/data/open-source projects/6-sitewhere/6.11/6-11-a.java	
+@@ -27,6 +27,7 @@ import com.sitewhere.spi.batch.request.IBatchElementCreateRequest;
+ import com.sitewhere.spi.batch.request.IBatchOperationCreateRequest;
+ import com.sitewhere.spi.device.IDevice;
+ import com.sitewhere.spi.device.IDeviceAssignment;
++import com.sitewhere.spi.device.IDeviceType;
+ import com.sitewhere.spi.device.command.IDeviceCommand;
+ import com.sitewhere.spi.device.event.CommandInitiator;
+ import com.sitewhere.spi.device.event.CommandTarget;
+@@ -71,7 +72,10 @@ public class BatchCommandInvocationHandler extends TenantEngineLifecycleComponen
+ 	IDeviceCommand command = getDeviceManagement().getDeviceCommandByToken(device.getDeviceTypeId(),
+ 		deviceCommandToken);
+ 	if (command == null) {
+-	    throw new SiteWhereException("Invalid command token referenced by batch command invocation.");
++	    IDeviceType type = getDeviceManagement().getDeviceType(device.getDeviceTypeId());
++	    throw new SiteWhereException(String.format(
++		    "Invalid command token (%s) for device type '%s' referenced by batch command invocation.",
++		    deviceCommandToken, type.getName()));
+ 	}
+ 
+ 	// Find the current assignment information for the device.

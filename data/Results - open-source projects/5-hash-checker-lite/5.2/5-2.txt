@@ -1,0 +1,4 @@
+2021-05-19 v. 1.0.8: Fix CDP issues
+1. Deleted:
+- duplicate method openGooglePlay at SettingsFragment
+- unused import at SettingsFragment

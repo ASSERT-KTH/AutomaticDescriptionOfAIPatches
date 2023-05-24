@@ -1,0 +1,8 @@
+@@ -514,6 +514,6 @@
+    }
+
+    String getDestinationPath() {
+-        return destinationUri.toString();
++        return destinationUri.getPath();
+    }
+}

@@ -1,0 +1,5 @@
+There has been a change in the section of code starting on line nr 50.
+
+The change is in the class KnowledgeFlask, in the method getItemHandler, in a return statement, in a lambda expression, in an if clause, in a then clause, in the invocation cancel.
+
+Moved invocation e.cancel() from line 50 to line 35.

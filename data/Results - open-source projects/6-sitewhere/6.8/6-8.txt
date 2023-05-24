@@ -1,0 +1,1 @@
+Log errors in Syncope token refresh process.

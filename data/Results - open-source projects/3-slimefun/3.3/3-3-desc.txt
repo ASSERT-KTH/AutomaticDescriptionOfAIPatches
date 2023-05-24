@@ -1,0 +1,5 @@
+There has been a change in the section of code starting on line nr 107.
+
+The change is in the class BlockPlacer, in the method onBlockDispense, in a return statement, in a lambda expression, in an if clause, in a then clause, in an if clause, in a then clause, in an if clause, in a binary operator, in a unary operator, in the invocation isDisabled.
+
+Changed invocation from item.isDisabled() to item.isDisabledIn(dispenser.getWorld()) on line 107.

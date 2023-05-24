@@ -1,0 +1,28 @@
+There has been a change in the section of code starting on line nr 38.
+
+The change is in the class SettingsFragment.
+
+Changed type access from  to com.smlnskgmail.jaman.hashcheckerlite.utils.WebUtils on line null.
+Deleted method private void openGooglePlay() {
+    final java.lang.String appPackageName = context.getPackageName();
+    android.net.Uri link;
+    try {
+        link = android.net.Uri.parse("market://details?id=" + appPackageName);
+        context.startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW, link));
+    } catch (android.content.ActivityNotFoundException e) {
+        try {
+            link = android.net.Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName);
+            context.startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW, link));
+        } catch (android.content.ActivityNotFoundException e2) {
+            com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils.e(e2);
+            showSnackbar(getString(R.string.message_error_start_google_play));
+        }
+    }
+} on line 155.
+Deleted method private void showSnackbar(@androidx.annotation.NonNull
+java.lang.String message) {
+    new com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar(context, getView(), message, themeHelper).show();
+} on line 186.
+Inserted field read context on line 146.
+Inserted invocation getView() on line 147.
+Inserted field read themeHelper on line 148.

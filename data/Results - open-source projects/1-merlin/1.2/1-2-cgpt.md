@@ -1,0 +1,1 @@
+The change made in this file is a modification in the unbind() method. The conditional statement was changed to check if MerlinService.isBound() returns true AND merlinServiceConnection is not null. The previous implementation only checked if MerlinService.isBound() returned true.

@@ -1,0 +1,10 @@
+There has been a change in the section of code starting on line nr 38.
+
+The change is in the class BeeWingsListener, in the method onApproachGround.
+
+Deleted if if (wings == null) {
+    return;
+} on line 40.
+Inserted binary operator ((wings == null) || (!e.isGliding())) on line 40.
+Moved binary operator wings == null from line 40 to line 40.
+Moved unary operator (!e.isGliding()) from line 44 to line 40.

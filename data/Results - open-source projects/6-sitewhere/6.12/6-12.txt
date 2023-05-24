@@ -1,0 +1,1 @@
+Update server selection timeout to -1 (indefinite). #721

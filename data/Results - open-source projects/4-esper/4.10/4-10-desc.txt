@@ -1,0 +1,8 @@
+There has been a change in the section of code starting on line nr 165.
+
+The change is in the class AIRegistryExprBase, in the method deassignService.
+
+Inserted for each for (java.util.Map.Entry<com.espertech.esper.epl.expression.table.ExprTableAccessNode, com.espertech.esper.core.context.stmt.AIRegistryTableAccess> entry : tableAccess.entrySet()) {
+    entry.getValue().deassignService(agentInstanceId);
+} on line 178.
+Inserted invocation matchRecognizePrevious.deassignService(agentInstanceId) on line 181.

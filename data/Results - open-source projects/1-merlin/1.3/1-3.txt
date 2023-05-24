@@ -1,0 +1,1 @@
+Check for null bindCallbackManager before forwarding bind event.

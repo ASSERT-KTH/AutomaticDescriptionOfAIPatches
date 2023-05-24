@@ -1,0 +1,2 @@
+Flip the parameters
+By checking if the unique id as a string equals the locationinfo, we avoid the null pointer exception, this is how it is achieved in this same class line 177

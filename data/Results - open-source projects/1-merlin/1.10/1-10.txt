@@ -1,0 +1,1 @@
+Add guard statement against null connection when unbinding.

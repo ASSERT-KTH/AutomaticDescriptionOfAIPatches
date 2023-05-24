@@ -1,0 +1,9 @@
+There has been a change in the section of code starting on line nr 55.
+
+The change is in the class HashCalculatorFragment.
+
+Deleted type reference com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment on line 55.
+Deleted literal 2000 on line 371.
+Inserted type reference com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment on line 55.
+Inserted field private static final int DOUBLE_BACK_TIME = 2000; on line 59.
+Inserted field read com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.HashCalculatorFragment.DOUBLE_BACK_TIME on line 372.

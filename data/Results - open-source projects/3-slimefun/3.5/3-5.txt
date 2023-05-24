@@ -1,0 +1,2 @@
+Update SlimefunItemSetup.java
+changed book binder energy consumption from 16 to 8 as energy consumption is per tick and not second. the lore shows 16/s therefore the j/t should be 8/t instead of 16/t as each tick is half a second.

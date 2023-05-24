@@ -1,0 +1,3 @@
+2020-09-01 v. 1.0.8: deleted unused import
+1. Deleted:
+- unused import statement in app/src/googlePlay.../MainActivity.java

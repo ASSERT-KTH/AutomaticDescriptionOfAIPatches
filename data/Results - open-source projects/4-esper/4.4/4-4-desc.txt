@@ -1,0 +1,32 @@
+There has been a change in the section of code starting on line nr 28.
+
+The change is in the class TestContainedEventSimple.
+
+Deleted type reference junit.framework.TestCase on line 28.
+Inserted type reference junit.framework.TestCase on line 28.
+Inserted method public void testArrayProperty() {
+    epService.getEPAdministrator().getConfiguration().addEventType(com.espertech.esper.regression.view.TestContainedEventSimple.MyBeanWithArray.class);
+    epService.getEPAdministrator().createEPL("create objectarray schema ContainedId(id string)");
+    com.espertech.esper.client.EPStatement stmt = epService.getEPAdministrator().createEPL("select * from MyBeanWithArray[select topId, * from containedIds @type(ContainedId)]");
+    stmt.addListener(listener);
+    epService.getEPRuntime().sendEvent(new com.espertech.esper.regression.view.TestContainedEventSimple.MyBeanWithArray("A", "one,two,three".split(",")));
+    com.espertech.esper.client.scopetest.EPAssertionUtil.assertPropsPerRow(listener.getAndResetLastNewData(), "topId,id".split(","), new java.lang.Object[][]{ new java.lang.Object[]{ "A", "one" }, new java.lang.Object[]{ "A", "two" }, new java.lang.Object[]{ "A", "three" } });
+} on line 293.
+Inserted class public static class MyBeanWithArray {
+    private final java.lang.String topId;
+
+    private final java.lang.String[] containedIds;
+
+    public MyBeanWithArray(java.lang.String topId, java.lang.String[] containedIds) {
+        this.topId = topId;
+        this.containedIds = containedIds;
+    }
+
+    public java.lang.String getTopId() {
+        return topId;
+    }
+
+    public java.lang.String[] getContainedIds() {
+        return containedIds;
+    }
+} on line 369.

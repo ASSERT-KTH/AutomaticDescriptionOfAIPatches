@@ -1,0 +1,9 @@
+There has been a change in the section of code starting on line nr 228.
+
+The change is in the class MainActivity, in the method waitForDoubleBackPressed, in an if clause, in a then clause.
+
+Changed invocation from startActivity(a) to finish() on line 232.
+Deleted local variable android.content.Intent a = new android.content.Intent(android.content.Intent.ACTION_MAIN) on line 229.
+Deleted invocation a.addCategory(Intent.CATEGORY_HOME) on line 230.
+Deleted invocation a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) on line 231.
+Deleted return return on line 233.

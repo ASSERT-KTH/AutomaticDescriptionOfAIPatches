@@ -1,0 +1,11 @@
+There has been a change in the class ObjectMap, in the section of code starting on line nr 33.
+  
+The change is in the class ```ObjectMap```.
+  
+The following changes have been made:  
+Deleted type parameter ```K``` on line 33.  
+Deleted type parameter ```V``` on line 33.  
+Deleted binary operator ```currentIndex - 1``` on line 648.  
+Inserted type parameter ```K``` on line 33.  
+Inserted type parameter ```V``` on line 33.  
+Moved field read ```currentIndex``` from line 648 to line 648.  

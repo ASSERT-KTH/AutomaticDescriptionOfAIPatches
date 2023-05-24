@@ -1,0 +1,131 @@
+There has been a change in the section of code starting on line nr 37.
+
+The change is in the class ContextControllerHashFactoryBase.
+
+Changed type reference from void to com.espertech.esper.core.context.mgr.FilterValueSetParam[][] on line 207.
+Changed parameter from int agentInstanceId to int hashCode on line 207.
+Changed local variable from com.espertech.esper.epl.spec.ContextDetailHashItem foundPartition = com.espertech.esper.core.context.mgr.ContextControllerHashFactoryBase.findHashItemSpec(hashSpec, filtersSpec) to FilterValueSetParam[][] addendum = com.espertech.esper.core.context.mgr.ContextControllerHashFactoryBase.getAddendumFilters(filtersSpec, hashCode, hashSpec, statementDesc) on line 214.
+Changed type reference from com.espertech.esper.epl.spec.ContextDetailHashItem to FilterValueSetParam[][] on line 214.
+Changed invocation from com.espertech.esper.core.context.mgr.ContextControllerHashFactoryBase.findHashItemSpec(hashSpec, filtersSpec) to com.espertech.esper.core.context.mgr.ContextControllerHashFactoryBase.getAddendumFilters(filtersSpec, hashCode, hashSpec, statementDesc) on line 214.
+Changed variable read from agentInstanceId to hashCode on line 219.
+Changed variable read from filtersSpec to statementDesc on line 214.
+Deleted local variable FilterValueSetParam[][] addendum = new FilterValueSetParam[1][] on line 221.
+Deleted assignment addendum[0] = new FilterValueSetParam[]{ filter } on line 222.
+Deleted continue continue on line 251.
+Deleted if if (!isCreateWindow) {
+    for (FilterSpecCompiled filtersSpec : filtersSpecs) {
+        com.espertech.esper.epl.spec.ContextDetailHashItem foundPartition = com.espertech.esper.core.context.mgr.ContextControllerHashFactoryBase.findHashItemSpec(hashSpec, filtersSpec);
+        if (foundPartition == null) {
+            continue;
+        }
+        FilterValueSetParam filter = new FilterValueSetParamImpl(foundPartition.getLookupable(), FilterOperator.EQUAL, agentInstanceId);
+        FilterValueSetParam[][] addendum = new FilterValueSetParam[1][];
+        addendum[0] = new FilterValueSetParam[]{ filter };
+        FilterValueSetParam[][] partitionFilters = foundPartition.getParametersCompiled();
+        if (partitionFilters != null) {
+            addendum = ContextControllerAddendumUtil.addAddendum(partitionFilters, filter);
+        }
+        FilterValueSetParam[][] existing = addendums.get(filtersSpec);
+        if (existing != null) {
+            addendum = ContextControllerAddendumUtil.multiplyAddendum(existing, addendum);
+        }
+        addendums.put(filtersSpec, addendum);
+    }
+} else {
+    java.lang.String declaredAsName = statementDesc.getStatement().getStatementSpec().getCreateWindowDesc().getAsEventTypeName();
+    if (declaredAsName != null) {
+        for (FilterSpecCompiled filterSpec : filtersSpecs) {
+            com.espertech.esper.epl.spec.ContextDetailHashItem foundPartition = null;
+            for (com.espertech.esper.epl.spec.ContextDetailHashItem partitionItem : hashSpec.getItems()) {
+                if (partitionItem.getFilterSpecCompiled().getFilterForEventType().getName().equals(declaredAsName)) {
+                    foundPartition = partitionItem;
+                    break;
+                }
+            }
+            if (foundPartition == null) {
+                continue;
+            }
+            FilterValueSetParam filter = new FilterValueSetParamImpl(foundPartition.getLookupable(), FilterOperator.EQUAL, agentInstanceId);
+            FilterValueSetParam[][] addendum = new FilterValueSetParam[1][];
+            addendum[0] = new FilterValueSetParam[]{ filter };
+            FilterValueSetParam[][] existing = addendums.get(filterSpec);
+            if (existing != null) {
+                addendum = ContextControllerAddendumUtil.multiplyAddendum(existing, addendum);
+            }
+            addendums.put(filterSpec, addendum);
+        }
+    }
+} on line 211.
+Inserted method public static void getAddendumFilters(java.util.IdentityHashMap<FilterSpecCompiled, FilterValueSetParam[][]> addendums, int hashCode, java.util.List<FilterSpecCompiled> filtersSpecs, com.espertech.esper.epl.spec.ContextDetailHash hashSpec, ContextControllerStatementDesc statementDesc) {
+    for (FilterSpecCompiled filtersSpec : filtersSpecs) {
+        FilterValueSetParam[][] addendum = com.espertech.esper.core.context.mgr.ContextControllerHashFactoryBase.getAddendumFilters(filtersSpec, hashCode, hashSpec, statementDesc);
+        if (addendum == null) {
+            continue;
+        }
+        FilterValueSetParam[][] existing = addendums.get(filtersSpec);
+        if (existing != null) {
+            addendum = ContextControllerAddendumUtil.multiplyAddendum(existing, addendum);
+        }
+        addendums.put(filtersSpec, addendum);
+    }
+} on line 207.
+Inserted parameter FilterSpecCompiled filterSpecCompiled on line 222.
+Inserted if if (!isCreateWindow) {
+    foundPartition = com.espertech.esper.core.context.mgr.ContextControllerHashFactoryBase.findHashItemSpec(hashSpec, filterSpecCompiled);
+} else {
+    java.lang.String declaredAsName = statementDesc.getStatement().getStatementSpec().getCreateWindowDesc().getAsEventTypeName();
+    for (com.espertech.esper.epl.spec.ContextDetailHashItem partitionItem : hashSpec.getItems()) {
+        if (partitionItem.getFilterSpecCompiled().getFilterForEventType().getName().equals(declaredAsName)) {
+            foundPartition = partitionItem;
+            break;
+        }
+    }
+} on line 228.
+Inserted return return addendum on line 254.
+Inserted if if (addendum == null) {
+    continue;
+} on line 210.
+Inserted return return null on line 242.
+Moved parameter java.util.IdentityHashMap<FilterSpecCompiled, FilterValueSetParam[][]> addendums from line 207 to line 207.
+Moved parameter java.util.List<FilterSpecCompiled> filtersSpecs from line 207 to line 207.
+Moved for each for (FilterSpecCompiled filtersSpec : filtersSpecs) {
+    com.espertech.esper.epl.spec.ContextDetailHashItem foundPartition = com.espertech.esper.core.context.mgr.ContextControllerHashFactoryBase.findHashItemSpec(hashSpec, filtersSpec);
+    if (foundPartition == null) {
+        continue;
+    }
+    FilterValueSetParam filter = new FilterValueSetParamImpl(foundPartition.getLookupable(), FilterOperator.EQUAL, agentInstanceId);
+    FilterValueSetParam[][] addendum = new FilterValueSetParam[1][];
+    addendum[0] = new FilterValueSetParam[]{ filter };
+    FilterValueSetParam[][] partitionFilters = foundPartition.getParametersCompiled();
+    if (partitionFilters != null) {
+        addendum = ContextControllerAddendumUtil.addAddendum(partitionFilters, filter);
+    }
+    FilterValueSetParam[][] existing = addendums.get(filtersSpec);
+    if (existing != null) {
+        addendum = ContextControllerAddendumUtil.multiplyAddendum(existing, addendum);
+    }
+    addendums.put(filtersSpec, addendum);
+} from line 212 to line 208.
+Moved local variable com.espertech.esper.epl.spec.ContextDetailHashItem foundPartition = null from line 242 to line 226.
+Moved if if (foundPartition == null) {
+    continue;
+} from line 215 to line 241.
+Moved local variable FilterValueSetParam filter = new FilterValueSetParamImpl(foundPartition.getLookupable(), FilterOperator.EQUAL, agentInstanceId) from line 219 to line 245.
+Moved local variable FilterValueSetParam[][] addendum = new FilterValueSetParam[1][] from line 255 to line 247.
+Moved assignment addendum[0] = new FilterValueSetParam[]{ filter } from line 256 to line 248.
+Moved local variable FilterValueSetParam[][] partitionFilters = foundPartition.getParametersCompiled() from line 224 to line 250.
+Moved if if (partitionFilters != null) {
+    addendum = ContextControllerAddendumUtil.addAddendum(partitionFilters, filter);
+} from line 225 to line 251.
+Moved unary operator !isCreateWindow from line 211 to line 228.
+Moved variable read addendum from line 262 to line 254.
+Moved block {
+    continue;
+} from line 215 to line 210.
+Moved local variable java.lang.String declaredAsName = statementDesc.getStatement().getStatementSpec().getCreateWindowDesc().getAsEventTypeName() from line 238 to line 232.
+Moved for each for (com.espertech.esper.epl.spec.ContextDetailHashItem partitionItem : hashSpec.getItems()) {
+    if (partitionItem.getFilterSpecCompiled().getFilterForEventType().getName().equals(declaredAsName)) {
+        foundPartition = partitionItem;
+        break;
+    }
+} from line 243 to line 233.

@@ -1,0 +1,180 @@
+There has been a change in the section of code starting on line nr 23.
+
+The change is in the class TestContextInitatedTerminatedWithNowParallel.
+
+Changed class from public class TestContextInitatedTerminatedWithNowParallel extends junit.framework.TestCase {
+    private com.espertech.esper.regression.context.EPServiceProvider epService;
+
+    private com.espertech.esper.client.scopetest.SupportUpdateListener listener;
+
+    public void setUp() {
+        Configuration configuration = com.espertech.esper.support.client.SupportConfigFactory.getConfiguration();
+        configuration.addEventType("SupportBean", com.espertech.esper.support.bean.SupportBean.class);
+        epService = EPServiceProviderManager.getDefaultProvider(configuration);
+        epService.initialize();
+        listener = new com.espertech.esper.client.scopetest.SupportUpdateListener();
+    }
+
+    public void tearDown() {
+        listener = null;
+    }
+
+    public void testStartNowCountReliably() throws java.lang.InterruptedException {
+        epService.getEPRuntime().sendEvent(new com.espertech.esper.client.time.CurrentTimeEvent(0));
+        epService.getEPAdministrator().createEPL("create context MyCtx start @now end after 1 second");
+        EPStatement stmt = epService.getEPAdministrator().createEPL("context MyCtx select count(*) as cnt from SupportBean output last when terminated");
+        stmt.addListener(listener);
+        java.util.concurrent.atomic.AtomicBoolean latch = new java.util.concurrent.atomic.AtomicBoolean(true);
+        java.lang.Thread t = new java.lang.Thread(new com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable(epService, latch, 10, -1));
+        t.start();
+        int numEvents = 10000;
+        for (int i = 0; i < numEvents; i++) {
+            epService.getEPRuntime().sendEvent(new com.espertech.esper.support.bean.SupportBean());
+        }
+        latch.set(false);
+        t.join();
+        epService.getEPRuntime().sendEvent(new com.espertech.esper.client.time.CurrentTimeEvent(java.lang.Integer.MAX_VALUE));
+        long total = 0;
+        EventBean[] deliveries = listener.getNewDataListFlattened();
+        for (EventBean event : deliveries) {
+            long count = ((java.lang.Long) (event.get("cnt")));
+            total += count;
+        }
+        assertEquals(numEvents, total);
+    }
+
+    public static class MyTimeAdvancingRunnable implements java.lang.Runnable {
+        private final com.espertech.esper.regression.context.EPServiceProvider epService;
+
+        private final java.util.concurrent.atomic.AtomicBoolean latch;
+
+        private final long threadSleepTime;
+
+        private final long maxNumAdvances;
+
+        public MyTimeAdvancingRunnable(EPServiceProvider epService, java.util.concurrent.atomic.AtomicBoolean latch, long threadSleepTime, long maxNumAdvances) {
+            this.epService = epService;
+            this.latch = latch;
+            this.threadSleepTime = threadSleepTime;
+            this.maxNumAdvances = maxNumAdvances;
+        }
+
+        public void run() {
+            long time = 1000;
+            long numAdvances = 0;
+            try {
+                while (latch.get() && ((maxNumAdvances == (-1)) || (numAdvances < maxNumAdvances))) {
+                    epService.getEPRuntime().sendEvent(new com.espertech.esper.client.time.CurrentTimeEvent(time));
+                    numAdvances++;
+                    time += 1000;
+                    try {
+                        java.lang.Thread.sleep(threadSleepTime);
+                    } catch (java.lang.InterruptedException e) {
+                    }
+                } 
+            } catch (java.lang.RuntimeException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+} to public class TestMTContextInitatedTerminatedWithNowParallel extends junit.framework.TestCase {
+    private com.espertech.esper.multithread.EPServiceProvider epService;
+
+    private com.espertech.esper.client.scopetest.SupportUpdateListener listener;
+
+    public void setUp() {
+        Configuration configuration = com.espertech.esper.support.client.SupportConfigFactory.getConfiguration();
+        configuration.addEventType("SupportBean", com.espertech.esper.support.bean.SupportBean.class);
+        epService = EPServiceProviderManager.getDefaultProvider(configuration);
+        epService.initialize();
+        listener = new com.espertech.esper.client.scopetest.SupportUpdateListener();
+    }
+
+    public void tearDown() {
+        listener = null;
+    }
+
+    public void testStartNowCountReliably() throws java.lang.InterruptedException {
+        epService.getEPRuntime().sendEvent(new com.espertech.esper.client.time.CurrentTimeEvent(0));
+        epService.getEPAdministrator().createEPL("create context MyCtx start @now end after 1 second");
+        EPStatement stmt = epService.getEPAdministrator().createEPL("context MyCtx select count(*) as cnt from SupportBean output last when terminated");
+        stmt.addListener(listener);
+        java.util.concurrent.atomic.AtomicBoolean latch = new java.util.concurrent.atomic.AtomicBoolean(true);
+        java.lang.Thread t = new java.lang.Thread(new com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable(epService, latch, 10, -1));
+        t.start();
+        int numEvents = 10000;
+        for (int i = 0; i < numEvents; i++) {
+            epService.getEPRuntime().sendEvent(new com.espertech.esper.support.bean.SupportBean());
+        }
+        latch.set(false);
+        t.join();
+        epService.getEPRuntime().sendEvent(new com.espertech.esper.client.time.CurrentTimeEvent(java.lang.Integer.MAX_VALUE));
+        long total = 0;
+        EventBean[] deliveries = listener.getNewDataListFlattened();
+        for (EventBean event : deliveries) {
+            long count = ((java.lang.Long) (event.get("cnt")));
+            total += count;
+        }
+        assertEquals(numEvents, total);
+    }
+
+    public static class MyTimeAdvancingRunnable implements java.lang.Runnable {
+        private final com.espertech.esper.multithread.EPServiceProvider epService;
+
+        private final java.util.concurrent.atomic.AtomicBoolean latch;
+
+        private final long threadSleepTime;
+
+        private final long maxNumAdvances;
+
+        public MyTimeAdvancingRunnable(EPServiceProvider epService, java.util.concurrent.atomic.AtomicBoolean latch, long threadSleepTime, long maxNumAdvances) {
+            this.epService = epService;
+            this.latch = latch;
+            this.threadSleepTime = threadSleepTime;
+            this.maxNumAdvances = maxNumAdvances;
+        }
+
+        public void run() {
+            long time = 1000;
+            long numAdvances = 0;
+            try {
+                while (latch.get() && ((maxNumAdvances == (-1)) || (numAdvances < maxNumAdvances))) {
+                    epService.getEPRuntime().sendEvent(new com.espertech.esper.client.time.CurrentTimeEvent(time));
+                    numAdvances++;
+                    time += 1000;
+                    try {
+                        java.lang.Thread.sleep(threadSleepTime);
+                    } catch (java.lang.InterruptedException e) {
+                    }
+                } 
+            } catch (java.lang.RuntimeException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+} on line 23.
+Changed type reference from com.espertech.esper.regression.context.EPServiceProvider to com.espertech.esper.multithread.EPServiceProvider on line 25.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type reference from com.espertech.esper.regression.context.EPServiceProvider to com.espertech.esper.multithread.EPServiceProvider on line 70.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed constructor call from new com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable(epService, latch, 10, -1) to new com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable(epService, latch, 10, -1) on line 49.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.
+Changed type access from com.espertech.esper.regression.context.TestContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable to com.espertech.esper.multithread.TestMTContextInitatedTerminatedWithNowParallel.MyTimeAdvancingRunnable on line null.

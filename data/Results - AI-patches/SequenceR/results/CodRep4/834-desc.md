@@ -1,0 +1,6 @@
+There has been a change in the method main, in the section of code starting on line nr 10.
+  
+The change is in a literal, in the constructorcall ```com.badlogic.gdx.backends.lwjgl.LwjglApplication()```, in the method ```main```, in the class ```BouncyDesktop```.
+  
+The following changes have been made:  
+Deleted literal ```true``` on line 10.  

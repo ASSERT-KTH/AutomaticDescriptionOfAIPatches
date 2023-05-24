@@ -1,0 +1,7 @@
+There has been a change in the section of code starting on line nr 70.
+
+The change is in the class EnhancedFurnaceListener, in the method onItemSmelt, in an if clause, in a then clause, in an if clause, in a then clause.
+
+Inserted if if (inventory.getSmelting() == null) {
+    return;
+} on line 74.

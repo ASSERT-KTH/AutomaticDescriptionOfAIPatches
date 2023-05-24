@@ -1,0 +1,14 @@
+diff --git a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.7/2-7-b.java b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.7/2-7-a.java
+index ef55b3d..e869559 100644
+--- a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.7/2-7-b.java	
++++ b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.7/2-7-a.java	
+@@ -76,9 +76,6 @@ public class RateLimitProperties {
+     private int preFilterOrder = FORM_BODY_WRAPPER_FILTER_ORDER;
+ 
+     public List<Policy> getPolicies(String key) {
+-        if (StringUtils.isEmpty(key)) {
+-            return defaultPolicyList;
+-        }
+         return policyList.getOrDefault(key, defaultPolicyList);
+     }
+ 

@@ -1,0 +1,13 @@
+diff --git a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.6/2-6-b.java b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.6/2-6-a.java
+index df7dcea..18da494 100644
+--- a/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.6/2-6-b.java	
++++ b/data/open-source projects/2-spring-cloud-zuul-ratelimit/2.6/2-6-a.java	
+@@ -212,7 +212,7 @@ public class RateLimitAutoConfiguration {
+ 
+     @EntityScan
+     @Configuration
+-    @EnableJpaRepositories
++    @EnableJpaRepositories(basePackages = "com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.config.repository.springdata")
+     @ConditionalOnMissingBean(RateLimiter.class)
+     @ConditionalOnProperty(prefix = PREFIX, name = "repository", havingValue = "JPA")
+     public static class SpringDataConfiguration {

@@ -1,0 +1,7 @@
+There has been a change in the section of code starting on line nr 68.
+
+The change is in the class ProgrammableAndroid.
+
+Deleted type reference io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem on line 68.
+Inserted type reference io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem on line 68.
+Moved invocation me.mrCookieSlime.Slimefun.api.BlockStorage.getLocationInfo(b.getLocation(), "owner") from line 97 to line 97.

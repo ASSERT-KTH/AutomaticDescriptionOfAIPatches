@@ -1,0 +1,1 @@
+reset redis storage between tests invocation

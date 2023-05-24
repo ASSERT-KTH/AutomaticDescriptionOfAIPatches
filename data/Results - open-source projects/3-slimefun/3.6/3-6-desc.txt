@@ -1,0 +1,7 @@
+There has been a change in the section of code starting on line nr 242.
+
+The change is in the class MachineProcessor, in the method updateProgressBar.
+
+Inserted if if ((remainingTicks <= 0) && (totalTicks <= 0)) {
+    return;
+} on line 256.

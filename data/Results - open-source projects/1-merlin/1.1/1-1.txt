@@ -1,0 +1,1 @@
+Returns a copy of registerables list in a Register to be safe while iterating over it

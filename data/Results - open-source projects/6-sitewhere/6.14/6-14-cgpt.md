@@ -1,0 +1,1 @@
+This is a license header comment that specifies the copyright holder and license terms for the file. It indicates that the software in the package is published under the terms of the CPAL v1.0 license, and includes a copy of the license in the LICENSE.txt file.

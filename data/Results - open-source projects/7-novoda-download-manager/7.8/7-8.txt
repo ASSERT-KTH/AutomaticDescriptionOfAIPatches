@@ -1,0 +1,1 @@
+Use Uri.getPath() instead of .toString() to get destination path #192 

@@ -1,0 +1,15 @@
+diff --git a/data/open-source projects/4-esper/4.14/4-14-b.java b/data/open-source projects/4-esper/4.14/4-14-a.java
+index e07e537..2b8bf13 100644
+--- a/data/open-source projects/4-esper/4.14/4-14-b.java	
++++ b/data/open-source projects/4-esper/4.14/4-14-a.java	
+@@ -11,7 +11,9 @@
+ 
+ package com.espertech.esper.support.bean;
+ 
+-public class SupportTradeEvent
++import java.io.Serializable;
++
++public class SupportTradeEvent implements Serializable
+ {
+     private int id;
+     private String userId;

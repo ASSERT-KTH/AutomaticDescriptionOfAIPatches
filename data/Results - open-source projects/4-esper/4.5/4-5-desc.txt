@@ -1,0 +1,6 @@
+There has been a change in the section of code starting on line nr 198.
+
+The change is in the class ContextControllerHashFactoryBase, in the method validatePopulateContextDesc, in a for each statement, in a localvariable, in a binary operator, in a binary operator.
+
+Inserted invocation com.espertech.esper.epl.expression.core.ExprNodeUtility.toExpressionStringMinPrecedenceSafe(paramExpr) on line 199.
+Moved variable read paramExpr from line 198 to line 199.

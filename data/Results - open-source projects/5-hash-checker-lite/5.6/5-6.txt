@@ -1,0 +1,1 @@
+2021-05-10 v. 1.0.8: improved Code Quality

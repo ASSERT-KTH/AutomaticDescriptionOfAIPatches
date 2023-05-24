@@ -1,0 +1,10 @@
+@@ -55,7 +55,9 @@
+
+            return downloads;
+        } finally {
+-            downloadsCursor.close();
++            if (downloadsCursor != null) {
++                downloadsCursor.close();
++            }
+        }
+    }

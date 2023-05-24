@@ -1,0 +1,16 @@
+diff --git a/data/open-source projects/3-slimefun/3.6/3-6-b.java b/data/open-source projects/3-slimefun/3.6/3-6-a.java
+index 4e44b12..5323d1b 100644
+--- a/data/open-source projects/3-slimefun/3.6/3-6-b.java	
++++ b/data/open-source projects/3-slimefun/3.6/3-6-a.java	
+@@ -252,6 +252,11 @@ public class MachineProcessor<T extends MachineOperation> {
+         int remainingTicks = operation.getRemainingTicks();
+         int totalTicks = operation.getTotalTicks();
+ 
++        // If the operation is finished, we don't need to update the progress bar.
++        if (remainingTicks <= 0 && totalTicks <= 0) {
++            return;
++        }
++
+         ChestMenuUtils.updateProgressbar(inv, slot, remainingTicks, totalTicks, getProgressBar());
+     }
+ 

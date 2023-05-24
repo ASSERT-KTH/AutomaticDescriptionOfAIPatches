@@ -1,0 +1,2 @@
+SequenceR GitHub repo:
+https://github.com/KTH/sequencer

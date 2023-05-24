@@ -1,0 +1,1 @@
+This code snippet is part of a class named MachineProcessor and contains a method that updates the progress bar of a Minecraft plugin. The changes made to the code include the addition of a check to see if the operation is finished before updating the progress bar. This is done to avoid unnecessary updates to the progress bar if the operation is already completed.

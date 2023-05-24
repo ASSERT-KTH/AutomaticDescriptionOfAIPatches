@@ -1,0 +1,1 @@
+Notification removed on app start #327 

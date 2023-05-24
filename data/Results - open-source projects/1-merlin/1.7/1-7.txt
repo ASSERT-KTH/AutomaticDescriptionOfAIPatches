@@ -1,0 +1,1 @@
+Add Merlin test for clearing registerables.

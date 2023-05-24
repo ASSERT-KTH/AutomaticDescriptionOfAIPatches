@@ -1,0 +1,13 @@
+diff --git a/data/open-source projects/1-merlin/1.2/1-2-b.java b/data/open-source projects/1-merlin/1.2/1-2-a.java
+index da641f6..e3940c6 100644
+--- a/data/open-source projects/1-merlin/1.2/1-2-b.java	
++++ b/data/open-source projects/1-merlin/1.2/1-2-a.java	
+@@ -46,7 +46,7 @@ public class MerlinServiceBinder {
+     }
+ 
+     public void unbind() {
+-        if (MerlinService.isBound()) {
++        if (MerlinService.isBound() && merlinServiceConnection != null) {
+             context.unbindService(merlinServiceConnection);
+             context.stopService(new Intent(context, MerlinService.class));
+             merlinServiceConnection = null;

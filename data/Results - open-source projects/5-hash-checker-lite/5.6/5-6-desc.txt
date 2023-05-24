@@ -1,0 +1,8 @@
+There has been a change in the section of code starting on line nr 202.
+
+The change is in the class SharedPreferencesSettingsHelper, in the method containsPreference.
+
+Deleted method private boolean containsPreference(@androidx.annotation.NonNull
+java.lang.String key) {
+    return android.preference.PreferenceManager.getDefaultSharedPreferences(context).contains(key);
+} on line 202.
